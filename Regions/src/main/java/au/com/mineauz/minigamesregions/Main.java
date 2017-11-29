@@ -12,6 +12,11 @@ import au.com.mineauz.minigames.tool.ToolModes;
 import au.com.mineauz.minigamesregions.commands.SetNodeCommand;
 import au.com.mineauz.minigamesregions.commands.SetRegionCommand;
 
+/**
+ * 
+ * @author Forked from https://github.com/AddstarMC/Minigames
+ *
+ */
 public class Main extends JavaPlugin{
 	
 	private static Minigames minigames;
