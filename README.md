@@ -3,9 +3,9 @@ Forked from AddstarMC/Minigames
 This fork allows for the creation of Memory (Match Match, Match Up etc.) style of games. It does this by providing an additional Regional
 Action that swaps all specified blocks in that region with random blocks in a way that the blocks always have paires.
 
-To use this action, built a gameboard that has a way to conceal and reviel blocks. All blocks that will be placed by this action can
-pushed and pulled by pistons. In this game board have marker stones that mark the postion of the blockes that will be replaced with the
-game blocks. Define a region around that gameboard.
+To use this action, built a gameboard that has a way to conceal and reveal blocks. All blocks that will be placed by this action can
+be pushed and pulled by pistons. In this game board have marker stones that mark the postion of the blockes that can be revealed and
+concealed. Define a region around that gameboard.
 
 Next set the MemorySwapBlockAction for that region and in the menu, define the matchblock to the marker block inside your gameboard.
 Optional you can also define a blacklist of blocks that should not appear on the gameboard (to prevent clashes with your gameboard
@@ -15,3 +15,5 @@ So WOOL would prevent all WOOL blocks to be placed, WOOL:15 on the other hand wo
 
 After setting up this action, be sure to trigger it only once when the game starts. This provides a new, random playing field for every
 game.
+
+The maximum gameboard size is 120 gameblocks. This action will warn if the gameboard is to big and skip surplus blocks.
