@@ -25,9 +25,9 @@ import au.com.mineauz.minigamesregions.triggers.Triggers;
  * 
  * @author Turidus  https://github.com/Turidus/Minigames
  *
- * This class provides the ability to swap two regions that have the same size.
- * If swap region is set to true, it will switch these two regions, if it is 
- * set to false, it will replace the TO region with the FROM region.
+ * This class provides the ability to swap the blocks in two regions that have the same size.
+ * If swap region is set to true, it will switch these two regions blocks, if it is 
+ * set to false, it will replace the TO regions blocks with the FROM regions block.
  * 
  * It allows to have template regions that can be copied into game or two switch
  * two regions.
@@ -73,6 +73,11 @@ public class RegionSwapAction extends ActionInterface {
 
 	}
 
+	/**
+	 * This method loops through all blocks in either region and saves their
+	 * BlockState. If both regions are the same size, it will switch the regions blocks
+	 * or replace the To (target) regions block with the From (start) regions block.
+	 */
 	@Override
 	public void executeNodeAction(MinigamePlayer player, Node node) {
 		debug(player,node);
