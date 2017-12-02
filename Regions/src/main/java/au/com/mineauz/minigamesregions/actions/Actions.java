@@ -43,6 +43,7 @@ public class Actions {
 		addAction("SWAP_BLOCK", SwapBlockAction.class);
 		//Added by Turidus for https://github.com/Turidus/Minigames
 		addAction("MEMORY_SWAP_BLOCK", MemorySwapBlockAction.class);
+		addAction("REGION_SWAP_ACTION", RegionSwapAction.class);
 		
 		addAction("APPLY_POTION", ApplyPotionAction.class);
 		addAction("FALLING_BLOCK", FallingBlockAction.class);

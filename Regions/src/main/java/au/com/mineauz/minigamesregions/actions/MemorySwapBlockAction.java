@@ -252,7 +252,7 @@ public class MemorySwapBlockAction extends ActionInterface {
 			
 		}
 		
-		//Cloning blockpool to prevent issues with the 
+		//Cloning blockpool to prevent issues with the block pool
 		for (PhantomBlock block : blockPool) {
 			finalBlockList.add(new PhantomBlock(block.blockName,block.blockMatchData,block.blockDataValue));
 		}
