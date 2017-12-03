@@ -34,6 +34,8 @@ public class Triggers {
 		addTrigger(new PlayerDropFlagTrigger());
 		addTrigger(new LeftClickBlockTrigger());
 		addTrigger(new RightClickBlockTrigger());
+		//Added by Turidus
+		addTrigger(new KillerTrigger());
 	}
 	
 	public static void addTrigger(Trigger trigger){
