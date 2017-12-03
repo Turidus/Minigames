@@ -1,7 +1,9 @@
 Forked from AddstarMC/Minigames
 
-This fork allows for the creation of Memory (Match Match, Match Up etc.) style of games. It does this by providing an additional Regional
-Action that swaps all specified blocks in that region with random blocks in a way that the blocks always have paires.
+This fork adds:
+
+1) MemorySwapBlogAction in MinigamesRegion
+A Regional Action that swaps all specified blocks in that region with random blocks in a way that the blocks always have paires.
 
 To use this action, built a gameboard that has a way to conceal and reveal blocks. All blocks that will be placed by this action can
 be pushed and pulled by pistons. In this game board have marker stones that mark the postion of the blockes that can be revealed and
@@ -17,3 +19,9 @@ After setting up this action, be sure to trigger it only once when the game star
 game.
 
 The maximum gameboard size is 120 gameblocks. This action will warn if the gameboard is to big and skip surplus blocks.
+
+2) RegionSwapAction in MinigamesRegion
+This action swaps or replaces all blocks in on region with the blocks of a different region of equal size
+
+3) Killer Trigger
+This trigger fires on player death but targets the killer instead of the dead player
