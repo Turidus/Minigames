@@ -204,7 +204,7 @@ public class Region implements ScriptObject {
 		if(player != null && player.getMinigame() != null && player.getMinigame().isSpectator(player)) return;
 		List<RegionExecutor> toExecute = new ArrayList<RegionExecutor>();
 		for(RegionExecutor exec : executors){
-			if(exec.getTrigger() == trigger){
+			if(exec.getTrigger().equals(trigger)){
 				if(checkConditions(exec, player) && exec.canBeTriggered(player))
 					toExecute.add(exec);
 			}
