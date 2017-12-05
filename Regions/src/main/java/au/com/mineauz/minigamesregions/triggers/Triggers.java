@@ -36,6 +36,7 @@ public class Triggers {
 		addTrigger(new RightClickBlockTrigger());
 		//Added by Turidus
 		addTrigger(new KillerTrigger());
+		addTrigger(new TimedRemoteTrigger());
 	}
 	
 	public static void addTrigger(Trigger trigger){

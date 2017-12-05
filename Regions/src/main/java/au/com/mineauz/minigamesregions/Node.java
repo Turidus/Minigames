@@ -80,7 +80,7 @@ public class Node implements ScriptObject {
 		if(player != null && player.getMinigame() != null && player.getMinigame().isSpectator(player)) return;
 		List<NodeExecutor> toExecute = new ArrayList<NodeExecutor>();
 		for(NodeExecutor exec : executors){
-			if(exec.getTrigger() == trigger){
+			if(exec.getTrigger().equals(trigger)){
 				if(checkConditions(exec, player) && exec.canBeTriggered(player))
 					toExecute.add(exec);
 			}
