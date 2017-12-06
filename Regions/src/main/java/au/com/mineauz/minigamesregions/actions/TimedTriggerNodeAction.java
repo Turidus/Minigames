@@ -19,6 +19,14 @@ import au.com.mineauz.minigamesregions.Region;
 import au.com.mineauz.minigamesregions.RegionModule;
 import au.com.mineauz.minigamesregions.triggers.Triggers;
 
+/**
+ * This Action trips {@link TimedRemoteTrigger} in a region or a node
+ * Applicable to nodes
+ * Uses the {@link org.bukkit.scheduler.BukkitScheduler} scheduler for threading.
+ * 
+ * @author Turidus https://github.com/Turidus/Minigames
+ *
+ */
 public class TimedTriggerNodeAction extends ActionInterface {
 	
 	private StringFlag node = new StringFlag("None", "node");

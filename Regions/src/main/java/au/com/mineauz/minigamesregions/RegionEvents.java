@@ -33,6 +33,10 @@ import au.com.mineauz.minigamesregions.triggers.Triggers;
 import au.com.mineauz.minigamesregions.executors.RegionExecutor;
 import au.com.mineauz.minigamesregions.executors.NodeExecutor;
 
+/* Modified by Turidus https://github.com/Turidus/Minigames
+ * 
+ * Added Killer Trigger
+*/
 public class RegionEvents implements Listener{
 	
 	private Minigames plugin = Minigames.plugin;
@@ -71,6 +75,7 @@ public class RegionEvents implements Listener{
 			Minigame mg = ply.getMinigame();
 			executeRegionChanges(mg, ply);
 		}
+		
 	}
 	
 	@EventHandler
@@ -114,6 +119,8 @@ public class RegionEvents implements Listener{
 					region.execute(Triggers.getTrigger("DEATH"), ply);
 			}
 		}
+		
+		//Turidus: KillerTrigger gets executet here
 		if(ply.getPlayer().getKiller() == null) return;
 		MinigamePlayer attacker = pdata.getMinigamePlayer(ply.getPlayer().getKiller());
 		if(attacker.isInMinigame()){

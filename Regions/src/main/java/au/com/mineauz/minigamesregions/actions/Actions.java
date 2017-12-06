@@ -16,6 +16,7 @@ import au.com.mineauz.minigamesregions.executors.RegionExecutor;
 import au.com.mineauz.minigamesregions.menuitems.MenuItemAction;
 import au.com.mineauz.minigamesregions.menuitems.MenuItemActionAdd;
 
+//Modified by Turidus https://github.com/Turidus/Minigames
 public class Actions {
 	private static Map<String, Class<? extends ActionInterface>> actions = new HashMap<>();
 	
@@ -56,7 +57,7 @@ public class Actions {
 		addAction("RESET_TRIGGER_COUNT", ResetTriggerCountAction.class);
 		addAction("TRIGGER_RANDOM", TriggerRandomAction.class);
 		
-		//Added by Turidus for https://github.com/Turidus/Minigames
+		//Added by Turidus
 		addAction("MEMORY_SWAP_BLOCK", MemorySwapBlockAction.class);
 		addAction("REGION_SWAP_ACTION", RegionSwapAction.class);
 		addAction("TIMED_TRIGGER_NODE", TimedTriggerNodeAction.class);

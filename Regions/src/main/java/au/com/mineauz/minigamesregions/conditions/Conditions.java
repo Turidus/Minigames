@@ -17,6 +17,7 @@ import au.com.mineauz.minigamesregions.executors.RegionExecutor;
 import au.com.mineauz.minigamesregions.menuitems.MenuItemCondition;
 import au.com.mineauz.minigamesregions.menuitems.MenuItemConditionAdd;
 
+//Modified by Turidus https://github.com/Turidus/Minigames
 public class Conditions {
 	private static Map<String, Class<? extends ConditionInterface>> conditions = new HashMap<String, Class<? extends ConditionInterface>>();
 	
@@ -39,6 +40,9 @@ public class Conditions {
 		addCondition("HAS_FLAG", HasFlagCondition.class);
 		addCondition("CONTAINS_ENTITY", ContainsEntityCondition.class);
 		addCondition("HAS_LOADOUT", HasLoudOutCondition.class);
+		
+		//added by Turidus
+		addCondition("BLOCK_ON_AND_HELD", BlockOnAndHeldCondition.class);
 	}
 	
 	public static void addCondition(String name, Class<? extends ConditionInterface> condition){
