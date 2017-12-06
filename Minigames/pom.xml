@@ -3,12 +3,20 @@
   <parent>
     <groupId>au.com.mineauz</groupId>
     <artifactId>MinigamesProject</artifactId>
-    <version>1.11.0</version>
+    <version>1.12.1-SNAPSHOT</version>
     <relativePath>..</relativePath>
   </parent>
   <artifactId>Minigames</artifactId>
+  <packaging>jar</packaging>
   <name>Minigames</name>
-
+    <description>A swiss knife plugin to construct any minigame you can imagine.</description>
+  <properties>
+    <mysql.user>root</mysql.user>
+    <mysql.password>password</mysql.password>
+    <mysql.database>test_games</mysql.database>
+    <mysql.host>localhost</mysql.host>
+    <mysql.port>3306</mysql.port>
+  </properties>
   <repositories>
     <!-- Spigot repo -->
     <repository>
@@ -28,7 +36,6 @@
       <id>maven-central</id>
       <url>http://repo1.maven.org/maven2/</url>
     </repository>
-
     <!--Bstats-->
     <repository>
       <id>bstats-repo</id>
@@ -40,14 +47,14 @@
       <id>addstar-repo</id>
       <url>http://maven.addstar.com.au/artifactory/ext-release-local</url>
       <snapshots>
-      	<enabled>false</enabled>
+        <enabled>false</enabled>
       </snapshots>
     </repository>
     <repository>
       <id>addstar-snapshot-repo</id>
       <url>http://maven.addstar.com.au/artifactory/ext-snapshot-local</url>
       <snapshots>
-      	<enabled>true</enabled>
+        <enabled>true</enabled>
       </snapshots>
       <releases>
         <enabled>false</enabled>
@@ -58,6 +65,7 @@
   <dependencies>
 
     <!-- Used for Economy interop -->
+
     <dependency>
       <groupId>net.milkbowl.vault</groupId>
       <artifactId>VaultAPI</artifactId>
@@ -86,17 +94,27 @@
       <resource>
         <targetPath>.</targetPath>
         <filtering>true</filtering>
-        <directory>${basedir}/.</directory>
+        <directory>src/main/resources</directory>
         <includes>
           <include>plugin.yml</include>
-		  <include>config.yml</include>
-		  <include>lang/*.yml</include>
-		  <include>presets/*.yml</include>
+          <include>config.yml</include>
+          <include>lang/*.yml</include>
+          <include>presets/*.yml</include>
         </includes>
       </resource>
     </resources>
 
-    <sourceDirectory>src</sourceDirectory>
+    <sourceDirectory>src/main/java</sourceDirectory>
+    <testResources>
+      <testResource>
+        <filtering>true</filtering>
+        <directory>src/test/resources</directory>
+        <targetPath>.</targetPath>
+        <includes>
+          <include>config.yml</include>
+        </includes>
+      </testResource>
+    </testResources>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>

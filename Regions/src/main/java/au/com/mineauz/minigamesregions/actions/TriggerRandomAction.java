@@ -52,7 +52,8 @@ public class TriggerRandomAction extends ActionInterface{
 
 	@Override
 	public void executeRegionAction(MinigamePlayer player, Region region) {
-		List<RegionExecutor> exs = new ArrayList<RegionExecutor>();
+		debug(player,region);
+		List<RegionExecutor> exs = new ArrayList<>();
 		for(RegionExecutor ex : region.getExecutors()){
 			if(ex.getTrigger().getName().equalsIgnoreCase("RANDOM"))
 				exs.add(ex);
@@ -80,7 +81,8 @@ public class TriggerRandomAction extends ActionInterface{
 
 	@Override
 	public void executeNodeAction(MinigamePlayer player, Node node) {
-		List<NodeExecutor> exs = new ArrayList<NodeExecutor>();
+		debug(player,node);
+		List<NodeExecutor> exs = new ArrayList<>();
 		for(NodeExecutor ex : node.getExecutors()){
 			if(ex.getTrigger().getName().equalsIgnoreCase("RANDOM"))
 				exs.add(ex);

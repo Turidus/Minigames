@@ -60,12 +60,14 @@ public class PlaySoundAction extends ActionInterface {
 	@Override
 	public void executeRegionAction(MinigamePlayer player,
 			Region region) {
+		debug(player,region);
 		execute(player, player.getLocation());
 	}
 
 	@Override
 	public void executeNodeAction(MinigamePlayer player,
 			Node node) {
+		debug(player,node);
 		execute(player, node.getLocation());
 	}
 	
@@ -105,7 +107,7 @@ public class PlaySoundAction extends ActionInterface {
 	public boolean displayMenu(MinigamePlayer player, Menu previous) {
 		Menu m = new Menu(3, "Play Sound", player);
 		m.addItem(new MenuItemPage("Back", Material.REDSTONE_TORCH_ON, previous), m.getSize() - 9);
-		List<String> sounds = new ArrayList<String>();
+		List<String> sounds = new ArrayList<>();
 		for(Sound s : Sound.values())
 			sounds.add(MinigameUtils.capitalize(s.toString().replace("_", " ")));
 		m.addItem(new MenuItemList("Sound", Material.NOTE_BLOCK, new Callback<String>() {

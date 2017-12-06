@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import au.com.mineauz.minigames.Minigames;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.potion.PotionEffect;
@@ -57,12 +58,14 @@ public class ApplyPotionAction extends ActionInterface {
 	@Override
 	public void executeRegionAction(MinigamePlayer player,
 			Region region) {
+		debug(player,region);
 		execute(player);
 	}
 
 	@Override
 	public void executeNodeAction(MinigamePlayer player,
 			Node node) {
+		debug(player,node);
 		execute(player);
 	}
 	
@@ -92,7 +95,7 @@ public class ApplyPotionAction extends ActionInterface {
 	public boolean displayMenu(MinigamePlayer player, Menu previous) {
 		Menu m = new Menu(3, "Apply Potion", player);
 		m.addItem(new MenuItemPage("Back", Material.REDSTONE_TORCH_ON, previous), m.getSize() - 9);
-		List<String> pots = new ArrayList<String>(PotionEffectType.values().length);
+		List<String> pots = new ArrayList<>(PotionEffectType.values().length);
 		for (PotionEffectType type : PotionEffectType.values()) {
 			if (type != null) {
 				pots.add(MinigameUtils.capitalize(type.getName().replace("_", " ")));

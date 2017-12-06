@@ -50,7 +50,8 @@ public class AddScoreAction extends ActionInterface {
 
 	@Override
 	public void executeNodeAction(MinigamePlayer player,
-			Node node) {
+			Node base) {
+		debug(player,base);
 		if(player == null || !player.isInMinigame()) return;
 		player.addScore(amount.getFlag());
 		player.getMinigame().setScore(player, player.getScore());
@@ -58,15 +59,17 @@ public class AddScoreAction extends ActionInterface {
 	}
 
 	@Override
-	public void executeRegionAction(MinigamePlayer player, Region region) {
+	public void executeRegionAction(MinigamePlayer player, Region base) {
+		debug(player,base);
 		if(player == null || !player.isInMinigame()) return;
 		player.addScore(amount.getFlag());
 		player.getMinigame().setScore(player, player.getScore());
+
 		checkScore(player);
 	}
 
 	private void checkScore(MinigamePlayer player){
-		if(player.getMinigame().getMaxScorePerPlayer() >= player.getScore() || player.getTeam().getScore() >= player.getMinigame().getMaxScore()){
+		if(player.getScore() >= player.getMinigame().getMaxScorePerPlayer()  || player.getTeam().getScore() >= player.getMinigame().getMaxScore()){
 			List<MinigamePlayer> w;
 			List<MinigamePlayer> l;
 			if(player.getMinigame().isTeamGame()){

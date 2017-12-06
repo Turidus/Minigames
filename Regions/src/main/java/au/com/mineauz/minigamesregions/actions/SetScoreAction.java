@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import au.com.mineauz.minigames.Minigames;
+import au.com.mineauz.minigames.minigame.Minigame;
 import au.com.mineauz.minigames.minigame.Team;
 import au.com.mineauz.minigames.minigame.modules.TeamsModule;
 import org.bukkit.Material;
@@ -64,7 +65,7 @@ public class SetScoreAction extends ActionInterface {
 	}
 
 	private void checkScore(MinigamePlayer player){
-		if(player.getMinigame().getMaxScorePerPlayer() <= player.getScore() || player.getTeam().getScore() >= player.getMinigame().getMaxScore()){
+		if( player.getScore()  >= player.getMinigame().getMaxScorePerPlayer()|| player.getTeam().getScore() >= player.getMinigame().getMaxScore()){
 			List<MinigamePlayer> w;
 			List<MinigamePlayer> l;
 			if(player.getMinigame().isTeamGame()){

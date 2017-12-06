@@ -39,11 +39,12 @@ public class BarrierAction extends ActionInterface{
 	@Override
 	public void executeNodeAction(MinigamePlayer player,
 			Node node) {
-		
+		debug(player,node);
 	}
 
 	@Override
 	public void executeRegionAction(MinigamePlayer player, Region region) {
+		debug(player,region);
 		if(player == null || !player.isInMinigame()) return;
 		Location o = player.getLocation().clone();
 		Location[] locs = {region.getFirstPoint(), region.getSecondPoint()};
@@ -56,9 +57,9 @@ public class BarrierAction extends ActionInterface{
 		boolean isMinX = false;
 		boolean isMinY = false;
 		boolean isMinZ = false;
-		double xval = 0;
-		double yval = 0;
-		double zval = 0;
+		double xval;
+		double yval;
+		double zval;
 		if(xdis1 < xdis2){
 			isMinX = true;
 			xval = xdis1;

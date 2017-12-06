@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import au.com.mineauz.minigames.Minigames;
+import au.com.mineauz.minigames.minigame.Team;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 
@@ -55,15 +57,31 @@ public class AddTeamScoreAction extends ActionInterface {
 	@Override
 	public void executeRegionAction(MinigamePlayer player,
 			Region region) {
+		debug(player,region);
 		executeAction(player);
 	}
 
 	@Override
 	public void executeNodeAction(MinigamePlayer player,
 			Node node) {
+		debug(player,node);
 		executeAction(player);
 	}
-	
+	private void checkScore(MinigamePlayer player){
+		if(player.getTeam().getScore() >= player.getMinigame().getMaxScore()){
+			if(player.getMinigame().isTeamGame()){
+				List<MinigamePlayer> w;
+				List<MinigamePlayer> l;
+				w = new ArrayList<>(player.getTeam().getPlayers());
+				l = new ArrayList<>(player.getMinigame().getPlayers().size() - player.getTeam().getPlayers().size());
+				for(Team t : TeamsModule.getMinigameModule(player.getMinigame()).getTeams()){
+					if(t != player.getTeam())
+						l.addAll(t.getPlayers());
+				}
+				Minigames.plugin.pdata.endMinigame(player.getMinigame(), w, l);
+			}
+		}
+	}
 	private void executeAction(MinigamePlayer player){
 		if(player == null || !player.isInMinigame()) return;
 		if(player.getTeam() != null && team.getFlag().equals("NONE")){
@@ -75,6 +93,7 @@ public class AddTeamScoreAction extends ActionInterface {
 				tm.getTeam(TeamColor.valueOf(team.getFlag())).addScore(score.getFlag());
 			}
 		}
+		checkScore(player);
 	}
 
 	@Override
@@ -108,7 +127,7 @@ public class AddTeamScoreAction extends ActionInterface {
 			}
 		}, null, null));
 		
-		List<String> teams = new ArrayList<String>();
+		List<String> teams = new ArrayList<>();
 		teams.add("None");
 		for(TeamColor team : TeamColor.values()){
 			teams.add(MinigameUtils.capitalize(team.toString()));

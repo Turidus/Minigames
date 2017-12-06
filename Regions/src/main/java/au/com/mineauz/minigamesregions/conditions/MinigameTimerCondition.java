@@ -2,6 +2,7 @@ package au.com.mineauz.minigamesregions.conditions;
 
 import java.util.Map;
 
+import au.com.mineauz.minigames.Minigames;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 
@@ -54,10 +55,13 @@ public class MinigameTimerCondition extends ConditionInterface{
 	public boolean checkNodeCondition(MinigamePlayer player, Node node) {
 		return check(player.getMinigame());
 	}
-	
 	private boolean check(Minigame mg){
-        return mg.getMinigameTimer().getTimeLeft() >= minTime.getFlag() &&
-                mg.getMinigameTimer().getTimeLeft() <= maxTime.getFlag();
+		int timeLeft = mg.getMinigameTimer().getTimeLeft();
+		int min = minTime.getFlag();
+		int max = maxTime.getFlag();
+		debug(mg);
+        return timeLeft >= min &&
+                timeLeft <= max;
     }
 
 	@Override

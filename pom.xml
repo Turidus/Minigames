@@ -2,16 +2,22 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>au.com.mineauz</groupId>
   <artifactId>MinigamesProject</artifactId>
-  <version>1.11.0</version>
+  <version>1.12.1-SNAPSHOT</version>
   <packaging>pom</packaging>
-  <name>MinigamesProject</name>
+  <name>Minigames-Project</name>
   <url>http://dev.bukkit.org/server-mods/minigames/</url>
   <scm>
     <connection>scm:git:git@github.com:AddstarMC/Minigames.git</connection>
     <developerConnection>scm:git:git@github.com:AddstarMC/Minigames.git</developerConnection>
     <url>https://github.com/AddstarMC/Minigames</url>
-    <tag>MinigamesProject-1.11.0</tag>
+    <tag>HEAD</tag>
   </scm>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <build.number />
+    <plugin.version>${project.version}-${build.number}</plugin.version>
+    <maven.javadoc.failOnError>false</maven.javadoc.failOnError>
+  </properties>
   <developers>
     <developer>
       <id>Razz</id>
@@ -32,6 +38,12 @@
       <timezone>10</timezone>
     </developer>
   </developers>
+  <licenses>
+    <license>
+        <name>MIT License</name>
+        <url>https://opensource.org/licenses/MIT</url>
+    </license>
+  </licenses>
   <distributionManagement>
     <repository>
       <id>maven.addstar.com.au</id>
@@ -44,28 +56,26 @@
       <url>http://maven.addstar.com.au/artifactory/ext-snapshot-local</url>
     </snapshotRepository>
   </distributionManagement>
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <build.number />
-    <plugin.version>${project.version}-${build.number}</plugin.version>
-  </properties>
-  
   <modules>
     <module>Minigames</module>
 	<module>Regions</module>
+    <module>minigamesdistribution</module>
   </modules>
-
   <repositories>
-    <!-- Other repositories -->
+    <!--Spigot-api-->
     <repository>
-      <id>maven-central</id>
-      <url>http://repo1.maven.org/maven2/</url>
+      <id>spigot-repo</id>
+      <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
     </repository>
-    
     <!-- Addstar repo -->
     <repository>
       <id>addstar-repo</id>
       <url>http://maven.addstar.com.au/artifactory/ext-release-local</url>
+    </repository>
+    <!-- Other repositories -->
+    <repository>
+      <id>maven-central</id>
+      <url>http://repo1.maven.org/maven2/</url>
     </repository>
   </repositories>
   <dependencies>
@@ -73,17 +83,20 @@
     <dependency>
       <groupId>org.spigotmc</groupId>
       <artifactId>spigot-api</artifactId>
-      <version>1.11.2-R0.1-SNAPSHOT</version>
+      <version>1.12.1-R0.1-SNAPSHOT</version>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.12</version>
+      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.mockito</groupId>
       <artifactId>mockito-core</artifactId>
-      <version>1.9.5</version>
+      <version>2.8.47</version>
+      <scope>test</scope>
     </dependency>
   </dependencies>
 
@@ -106,6 +119,15 @@
             <source>1.8</source>
             <target>1.8</target>
           </configuration>
+        </plugin>
+        <plugin>
+          <artifactId>maven-assembly-plugin</artifactId>
+          <version>3.0.0</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-javadoc-plugin</artifactId>
+          <version>2.10.4</version>
         </plugin>
       </plugins>
     </pluginManagement>

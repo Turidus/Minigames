@@ -3,21 +3,14 @@
   <parent>
     <groupId>au.com.mineauz</groupId>
     <artifactId>MinigamesProject</artifactId>
-    <version>1.11.0</version>
+    <version>1.12.1-SNAPSHOT</version>
     <relativePath>..</relativePath>
   </parent>
   <artifactId>Minigames-Regions</artifactId>
   <name>Minigames-Regions</name>
-  <properties>
-    <plugin.version>${project.version}-${build.number}</plugin.version>
-  </properties>
+  <description>An addon to Minigames to allow regions and nodes to have triggers and actions</description>
+  <packaging>jar</packaging>
   <repositories>
-    <!-- Other repositories -->
-    <repository>
-      <id>maven-central</id>
-      <url>http://repo1.maven.org/maven2/</url>
-    </repository>
-    
     <!-- Spigot repo -->
     <repository>
       <id>spigot-repo</id>
@@ -45,7 +38,6 @@
   </repositories>
 
   <dependencies>
-
     <dependency>
       <groupId>au.com.mineauz</groupId>
       <artifactId>Minigames</artifactId>

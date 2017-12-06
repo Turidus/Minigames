@@ -62,7 +62,7 @@ public class ExecuteCommandAction extends ActionInterface {
 		
 		return string
 			.replace("{player}", player.getName())
-			.replace("{dispplayer}", player.getName())
+			.replace("{dispplayer}", player.getDisplayName())
 			.replace("{px}", String.valueOf(player.getLocation().getX()))
 			.replace("{py}", String.valueOf(player.getLocation().getY()))
 			.replace("{pz}", String.valueOf(player.getLocation().getZ()))
@@ -79,6 +79,7 @@ public class ExecuteCommandAction extends ActionInterface {
 
 	@Override
 	public void executeRegionAction(final MinigamePlayer player, final Region region) {
+		debug(player,region);
 		String command = replacePlayerTags(player, comd.getFlag());
 		command = command.replace("{region}", region.getName());
 		
@@ -116,6 +117,7 @@ public class ExecuteCommandAction extends ActionInterface {
 
 	@Override
 	public void executeNodeAction(final MinigamePlayer player, final Node node) {
+		debug(player,node);
 		String command = replacePlayerTags(player, comd.getFlag());
 		command = command
 			.replace("{x}", String.valueOf(node.getLocation().getBlockX()))

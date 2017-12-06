@@ -56,12 +56,14 @@ public class SetTeamScoreAction extends ActionInterface {
 	@Override
 	public void executeRegionAction(MinigamePlayer player,
 			Region region) {
+		debug(player,region);
 		executeAction(player);
 	}
 
 	@Override
 	public void executeNodeAction(MinigamePlayer player,
 			Node node) {
+		debug(player,node);
 		executeAction(player);
 	}
 	
@@ -114,7 +116,7 @@ public class SetTeamScoreAction extends ActionInterface {
 		m.addItem(new MenuItemPage("Back", Material.REDSTONE_TORCH_ON, previous), m.getSize() - 9);
 		m.addItem(score.getMenuItem("Set Score Amount", Material.STONE, null, null));
 		
-		List<String> teams = new ArrayList<String>();
+		List<String> teams = new ArrayList<>();
 		teams.add("None");
 		for(TeamColor team : TeamColor.values()){
 			teams.add(MinigameUtils.capitalize(team.toString()));
