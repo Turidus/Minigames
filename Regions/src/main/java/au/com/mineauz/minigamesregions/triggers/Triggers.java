@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class Triggers {
 	
-	private static Map<String, Trigger> triggers = new HashMap<String, Trigger>();
+	private static Map<String, Trigger> triggers = new HashMap<>();
 	
 	static{
 		addTrigger(new BlockBreakTrigger());
@@ -34,6 +34,8 @@ public class Triggers {
 		addTrigger(new PlayerDropFlagTrigger());
 		addTrigger(new LeftClickBlockTrigger());
 		addTrigger(new RightClickBlockTrigger());
+		//Added by Turidus
+		addTrigger(new KillerTrigger());
 	}
 	
 	public static void addTrigger(Trigger trigger){
@@ -48,11 +50,11 @@ public class Triggers {
 	}
 	
 	public static List<String> getAllTriggers(){
-		return new ArrayList<String>(triggers.keySet());
+		return new ArrayList<>(triggers.keySet());
 	}
 	
 	public static List<String> getAllNodeTriggers(){
-		List<String> nt = new ArrayList<String>();
+		List<String> nt = new ArrayList<>();
 		for(Trigger t : triggers.values()){
 			if(t.useInNodes())
 				nt.add(t.getName());
@@ -61,7 +63,7 @@ public class Triggers {
 	}
 	
 	public static List<String> getAllRegionTriggers(){
-		List<String> rt = new ArrayList<String>();
+		List<String> rt = new ArrayList<>();
 		for(Trigger t : triggers.values()){
 			if(t.useInRegions())
 				rt.add(t.getName());
