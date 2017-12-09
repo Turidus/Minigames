@@ -7,6 +7,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import au.com.mineauz.minigames.MinigamePlayer;
 import au.com.mineauz.minigames.Minigames;
 import au.com.mineauz.minigames.menu.Menu;
+import au.com.mineauz.minigames.minigame.Minigame;
 import au.com.mineauz.minigamesregions.Node;
 import au.com.mineauz.minigamesregions.Region;
 
@@ -38,7 +39,7 @@ public class RevertAction extends ActionInterface {
 
 	@Override
 	public void executeNodeAction(MinigamePlayer player,
-			Node node) {
+			Node node, Minigame mgm) {
 		debug(player,node);
 		if(player == null || !player.isInMinigame()) return;
 		if(!player.isDead())
@@ -46,7 +47,7 @@ public class RevertAction extends ActionInterface {
 	}
 
 	@Override
-	public void executeRegionAction(MinigamePlayer player, Region region) {
+	public void executeRegionAction(MinigamePlayer player, Region region, Minigame mgm) {
 		debug(player,region);
 		if(player == null || !player.isInMinigame()) return;
 		if(!player.isDead())

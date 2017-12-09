@@ -10,6 +10,7 @@ import au.com.mineauz.minigames.MinigamePlayer;
 import au.com.mineauz.minigames.Minigames;
 import au.com.mineauz.minigames.gametypes.MinigameType;
 import au.com.mineauz.minigames.menu.Menu;
+import au.com.mineauz.minigames.minigame.Minigame;
 import au.com.mineauz.minigames.minigame.Team;
 import au.com.mineauz.minigames.minigame.modules.TeamsModule;
 import au.com.mineauz.minigamesregions.Node;
@@ -42,20 +43,24 @@ public class EndAction extends ActionInterface {
 	}
 
 	@Override
-	public void executeNodeAction(MinigamePlayer player,
-			Node node) {
-		execute(player);
+	public void executeNodeAction(MinigamePlayer player, Node node, Minigame mgm) {
 		debug(player,node);
+		execute(player, mgm);
 	}
 
 	@Override
-	public void executeRegionAction(MinigamePlayer player, Region region) {
+	public void executeRegionAction(MinigamePlayer player, Region region, Minigame mgm) {
 		debug(player,region);
-		execute(player);
+		execute(player, mgm);
 	}
 	
-	private void execute(MinigamePlayer player){
-		if(player == null || !player.isInMinigame()) return;
+	private void execute(MinigamePlayer player,Minigame mgm){
+		//TODO test, find a better way
+		if(player == null) {
+			Minigames.plugin.pdata.endMinigame(mgm.getPlayers().get(0));
+			}else if(!player.isInMinigame()) {
+				return;
+		}
 		if(player.getMinigame().getType() != MinigameType.SINGLEPLAYER){
 			List<MinigamePlayer> w = null;
 			List<MinigamePlayer> l = null;
@@ -76,7 +81,7 @@ public class EndAction extends ActionInterface {
 			}
 			Minigames.plugin.pdata.endMinigame(player.getMinigame(), w, l);
 		} else{
-			Minigames.plugin.pdata.endMinigame(player);
+			Minigames.plugin.pdata.endMinigame(player.getMinigame().getPlayers().get(0));
 		}
 	}
 

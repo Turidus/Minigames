@@ -1,5 +1,6 @@
 package au.com.mineauz.minigamesregions.conditions;
 
+import au.com.mineauz.minigames.minigame.Minigame;
 import au.com.mineauz.minigames.minigame.Team;
 
 import java.util.Map;
@@ -45,7 +46,8 @@ public class TeamPlayerCountCondition extends ConditionInterface {
 	}
 
 	@Override
-	public boolean checkRegionCondition(MinigamePlayer player, Region region) {
+	public boolean checkRegionCondition(MinigamePlayer player, Region region, Minigame mgm) {
+		if(player == null || !player.isInMinigame()) return false;
 		if(player.getTeam() != null) {
 			Integer count = 0;
 			Team t = player.getTeam();
@@ -61,7 +63,7 @@ public class TeamPlayerCountCondition extends ConditionInterface {
 	}
 
 	@Override
-	public boolean checkNodeCondition(MinigamePlayer player, Node node) {
+	public boolean checkNodeCondition(MinigamePlayer player, Node node, Minigame mgm) {
 		return false;
 	}
 

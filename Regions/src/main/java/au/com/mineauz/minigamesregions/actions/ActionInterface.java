@@ -18,8 +18,8 @@ public abstract class ActionInterface {
 	public abstract void describe(Map<String, Object> out);
 	public abstract boolean useInRegions();
 	public abstract boolean useInNodes();
-	public abstract void executeRegionAction(MinigamePlayer player, Region region);
-	public abstract void executeNodeAction(MinigamePlayer player, Node node);
+	public abstract void executeRegionAction(MinigamePlayer player, Region region, Minigame mgm);
+	public abstract void executeNodeAction(MinigamePlayer player, Node node, Minigame mgm);
 	public abstract void saveArguments(FileConfiguration config, String path);
 	public abstract void loadArguments(FileConfiguration config, String path);
 	public abstract boolean displayMenu(MinigamePlayer player, Menu previous);

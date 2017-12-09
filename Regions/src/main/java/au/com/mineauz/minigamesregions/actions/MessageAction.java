@@ -12,6 +12,7 @@ import au.com.mineauz.minigames.MinigamePlayer;
 import au.com.mineauz.minigames.config.StringFlag;
 import au.com.mineauz.minigames.menu.Menu;
 import au.com.mineauz.minigames.menu.MenuItemPage;
+import au.com.mineauz.minigames.minigame.Minigame;
 import au.com.mineauz.minigames.script.ExpressionParser;
 import au.com.mineauz.minigames.script.ScriptObject;
 import au.com.mineauz.minigames.script.ScriptReference;
@@ -48,7 +49,7 @@ public class MessageAction extends ActionInterface {
 	}
 
 	@Override
-	public void executeNodeAction(final MinigamePlayer player, final Node node) {
+	public void executeNodeAction(final MinigamePlayer player, final Node node, Minigame mgm) {
 		debug(player,node);
 		if(player == null || !player.isInMinigame()) return;
 		
@@ -83,7 +84,7 @@ public class MessageAction extends ActionInterface {
 	}
 
 	@Override
-	public void executeRegionAction(final MinigamePlayer player, final Region region) {
+	public void executeRegionAction(final MinigamePlayer player, final Region region, Minigame mgm) {
 		debug(player,region);
 		if(player == null || !player.isInMinigame()) return;
 		player.sendMessage(msg.getFlag(), null);

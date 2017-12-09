@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import au.com.mineauz.minigames.Minigames;
+import au.com.mineauz.minigames.minigame.Minigame;
 import au.com.mineauz.minigames.minigame.Team;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -55,14 +56,14 @@ public class SetTeamScoreAction extends ActionInterface {
 
 	@Override
 	public void executeRegionAction(MinigamePlayer player,
-			Region region) {
+			Region region, Minigame mgm) {
 		debug(player,region);
 		executeAction(player);
 	}
 
 	@Override
 	public void executeNodeAction(MinigamePlayer player,
-			Node node) {
+			Node node, Minigame mgm) {
 		debug(player,node);
 		executeAction(player);
 	}

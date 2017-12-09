@@ -14,6 +14,7 @@ import au.com.mineauz.minigames.config.BooleanFlag;
 import au.com.mineauz.minigames.config.StringFlag;
 import au.com.mineauz.minigames.menu.Menu;
 import au.com.mineauz.minigames.menu.MenuItemBack;
+import au.com.mineauz.minigames.minigame.Minigame;
 import au.com.mineauz.minigames.script.ExpressionParser;
 import au.com.mineauz.minigames.script.ScriptObject;
 import au.com.mineauz.minigames.script.ScriptReference;
@@ -54,7 +55,7 @@ public class BroadcastAction extends ActionInterface{
 	}
 
 	@Override
-	public void executeRegionAction(final MinigamePlayer player, final Region region) {
+	public void executeRegionAction(final MinigamePlayer player, final Region region, final Minigame mgm) {
 		ScriptObject base = new ScriptObject() {
 			@Override
 			public Set<String> getKeys() {
@@ -82,11 +83,11 @@ public class BroadcastAction extends ActionInterface{
 			}
 		};
 		debug(player,base);
-		execute(player, base);
+		execute(player, base, mgm);
 	}
 
 	@Override
-	public void executeNodeAction(final MinigamePlayer player, final Node node) {
+	public void executeNodeAction(final MinigamePlayer player, final Node node, final Minigame mgm) {
 		ScriptObject base = new ScriptObject() {
 			@Override
 			public Set<String> getKeys() {
@@ -114,10 +115,10 @@ public class BroadcastAction extends ActionInterface{
 			}
 		};
 		debug(player,base);
-		execute(player, base);
+		execute(player, base, mgm);
 	}
 	
-	private void execute(MinigamePlayer player, ScriptObject base){
+	private void execute(MinigamePlayer player, ScriptObject base, Minigame mgm){
 		String type = "info";
 		if(redText.getFlag())
 			type = "error";
@@ -134,7 +135,7 @@ public class BroadcastAction extends ActionInterface{
 		// New expression system
 		message = ExpressionParser.stringResolve(message, base, true, true);
 		
-		Minigames.plugin.mdata.sendMinigameMessage(player.getMinigame(), message, type, exclude);
+		Minigames.plugin.mdata.sendMinigameMessage(mgm, message, type, exclude);
 	}
 
 	@Override

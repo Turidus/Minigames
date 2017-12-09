@@ -15,6 +15,7 @@ import au.com.mineauz.minigames.menu.Callback;
 import au.com.mineauz.minigames.menu.Menu;
 import au.com.mineauz.minigames.menu.MenuItemPage;
 import au.com.mineauz.minigames.menu.MenuItemString;
+import au.com.mineauz.minigames.minigame.Minigame;
 import au.com.mineauz.minigamesregions.Node;
 import au.com.mineauz.minigamesregions.Region;
 
@@ -56,7 +57,7 @@ public class SetBlockAction extends ActionInterface {
 	@SuppressWarnings("deprecation")
 	@Override
 	public void executeRegionAction(MinigamePlayer player,
-			Region region) {
+			Region region, Minigame mgm) {
 		debug(player,region);
 		Location temp = region.getFirstPoint();
 		for(int y = region.getFirstPoint().getBlockY(); y <= region.getSecondPoint().getBlockY(); y++){
@@ -80,7 +81,7 @@ public class SetBlockAction extends ActionInterface {
 	@SuppressWarnings("deprecation")
 	@Override
 	public void executeNodeAction(MinigamePlayer player,
-			Node node) {
+			Node node, Minigame mgm) {
 		debug(player,node);
 		BlockState bs = node.getLocation().getBlock().getState();
 		bs.setType(Material.getMaterial(type.getFlag()));

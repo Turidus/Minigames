@@ -10,6 +10,7 @@ import au.com.mineauz.minigames.MinigameUtils;
 import au.com.mineauz.minigames.config.BooleanFlag;
 import au.com.mineauz.minigames.menu.Menu;
 import au.com.mineauz.minigames.menu.MenuItemPage;
+import au.com.mineauz.minigames.minigame.Minigame;
 import au.com.mineauz.minigamesregions.Node;
 import au.com.mineauz.minigamesregions.Region;
 
@@ -45,13 +46,13 @@ public class FlightAction extends ActionInterface{
 	}
 
 	@Override
-	public void executeRegionAction(MinigamePlayer player, Region region) {
+	public void executeRegionAction(MinigamePlayer player, Region region, Minigame mgm) {
 		debug(player,region);
 		execute(player);
 	}
 
 	@Override
-	public void executeNodeAction(MinigamePlayer player, Node node) {
+	public void executeNodeAction(MinigamePlayer player, Node node, Minigame mgm) {
 		debug(player,node);
 		execute(player);
 	}

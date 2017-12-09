@@ -9,6 +9,7 @@ import org.bukkit.Location;
 import com.google.common.collect.ImmutableSet;
 
 import au.com.mineauz.minigames.MinigamePlayer;
+import au.com.mineauz.minigames.minigame.Minigame;
 import au.com.mineauz.minigames.script.ScriptObject;
 import au.com.mineauz.minigames.script.ScriptReference;
 import au.com.mineauz.minigames.script.ScriptValue;
@@ -76,23 +77,23 @@ public class Node implements ScriptObject {
 		return enabled;
 	}
 	
-	public void execute(Trigger trigger, MinigamePlayer player){
+	public void execute(Trigger trigger, MinigamePlayer player, Minigame mgm){
 		if(player != null && player.getMinigame() != null && player.getMinigame().isSpectator(player)) return;
 		List<NodeExecutor> toExecute = new ArrayList<NodeExecutor>();
 		for(NodeExecutor exec : executors){
 			if(exec.getTrigger() == trigger){
-				if(checkConditions(exec, player) && exec.canBeTriggered(player))
+				if(checkConditions(exec, player, mgm) && exec.canBeTriggered(player))
 					toExecute.add(exec);
 			}
 		}
 		for(NodeExecutor exec : toExecute){
-			execute(exec, player);
+			execute(exec, player, mgm);
 		}
 	}
 	
-	public boolean checkConditions(NodeExecutor exec, MinigamePlayer player){
+	public boolean checkConditions(NodeExecutor exec, MinigamePlayer player, Minigame mgm){
 		for(ConditionInterface con : exec.getConditions()){
-			boolean c = con.checkNodeCondition(player, this);
+			boolean c = con.checkNodeCondition(player, this, mgm);
 			if(con.isInverted())
 				c = !c;
 			if(!c){
@@ -102,10 +103,10 @@ public class Node implements ScriptObject {
 		return true;
 	}
 	
-	public void execute(NodeExecutor exec, MinigamePlayer player){
+	public void execute(NodeExecutor exec, MinigamePlayer player, Minigame mgm){
 		for(ActionInterface act : exec.getActions()){
 			if(!enabled && !act.getName().equalsIgnoreCase("SET_ENABLED")) continue;
-			act.executeNodeAction(player, this);
+			act.executeNodeAction(player, this, mgm);
 			if(!exec.isTriggerPerPlayer())
 				exec.addPublicTrigger();
 			else

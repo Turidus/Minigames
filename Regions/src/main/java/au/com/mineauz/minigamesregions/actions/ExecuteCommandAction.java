@@ -17,6 +17,7 @@ import au.com.mineauz.minigames.menu.Callback;
 import au.com.mineauz.minigames.menu.Menu;
 import au.com.mineauz.minigames.menu.MenuItemPage;
 import au.com.mineauz.minigames.menu.MenuItemString;
+import au.com.mineauz.minigames.minigame.Minigame;
 import au.com.mineauz.minigames.script.ExpressionParser;
 import au.com.mineauz.minigames.script.ScriptObject;
 import au.com.mineauz.minigames.script.ScriptReference;
@@ -56,10 +57,7 @@ public class ExecuteCommandAction extends ActionInterface {
 	}
 	
 	private String replacePlayerTags(MinigamePlayer player, String string) {
-		if (player == null) {
-			return string;
-		}
-		
+				
 		return string
 			.replace("{player}", player.getName())
 			.replace("{dispplayer}", player.getDisplayName())
@@ -76,10 +74,11 @@ public class ExecuteCommandAction extends ActionInterface {
 			.replace("{score}", String.valueOf(player.getScore()))
 			.replace("{team}", (player.getTeam() != null ? player.getTeam().getDisplayName() : ""));
 	}
-
+	
 	@Override
-	public void executeRegionAction(final MinigamePlayer player, final Region region) {
+	public void executeRegionAction(final MinigamePlayer player, final Region region, final Minigame mgm) {
 		debug(player,region);
+		//TODO Check if overhaul is needed
 		String command = replacePlayerTags(player, comd.getFlag());
 		command = command.replace("{region}", region.getName());
 		
@@ -116,7 +115,7 @@ public class ExecuteCommandAction extends ActionInterface {
 	}
 
 	@Override
-	public void executeNodeAction(final MinigamePlayer player, final Node node) {
+	public void executeNodeAction(final MinigamePlayer player, final Node node, final Minigame mgm) {
 		debug(player,node);
 		String command = replacePlayerTags(player, comd.getFlag());
 		command = command

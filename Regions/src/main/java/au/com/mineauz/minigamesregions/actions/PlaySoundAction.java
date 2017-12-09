@@ -3,6 +3,7 @@ package au.com.mineauz.minigamesregions.actions;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -19,6 +20,7 @@ import au.com.mineauz.minigames.menu.Menu;
 import au.com.mineauz.minigames.menu.MenuItemDecimal;
 import au.com.mineauz.minigames.menu.MenuItemList;
 import au.com.mineauz.minigames.menu.MenuItemPage;
+import au.com.mineauz.minigames.minigame.Minigame;
 import au.com.mineauz.minigamesregions.Node;
 import au.com.mineauz.minigamesregions.Region;
 
@@ -59,20 +61,52 @@ public class PlaySoundAction extends ActionInterface {
 
 	@Override
 	public void executeRegionAction(MinigamePlayer player,
-			Region region) {
+			Region region, Minigame mgm) {
+		//TODO Testing, better way?
 		debug(player,region);
-		execute(player, player.getLocation());
+		Location loc = null;
+		if (player == null) {
+			Random rand = new Random();
+			double xrand = rand.nextDouble() *
+					(region.getSecondPoint().getBlockX() - region.getFirstPoint().getBlockX()) +
+					region.getFirstPoint().getBlockX();
+			double yrand = rand.nextDouble() *
+					(region.getSecondPoint().getBlockY() - region.getFirstPoint().getBlockY()) +
+					region.getFirstPoint().getBlockY();
+			double zrand = rand.nextDouble() *
+					(region.getSecondPoint().getBlockZ() - region.getFirstPoint().getBlockZ()) +
+					region.getFirstPoint().getBlockZ();
+			
+			Location rndLoc = region.getFirstPoint();
+			rndLoc.setX(xrand);
+			rndLoc.setY(yrand);
+			rndLoc.setZ(zrand);
+			
+			loc = rndLoc;
+			
+		}else {
+			loc = player.getLocation();
+		}
+		
+		execute(player, loc, mgm);
 	}
 
 	@Override
 	public void executeNodeAction(MinigamePlayer player,
-			Node node) {
+			Node node, Minigame mgm) {
 		debug(player,node);
-		execute(player, node.getLocation());
+		execute(player, node.getLocation(), mgm);
 	}
 	
-	private void execute(MinigamePlayer player, Location loc){
-		if(player == null || !player.isInMinigame()) return;
+	private void execute(MinigamePlayer player, Location loc, Minigame mgm){
+		if(player == null) {
+			if(mgm.getPlayers() == null) return;
+			mgm.getPlayers().get(0).getPlayer().getWorld().playSound(loc,
+					Sound.valueOf(sound.getFlag()), 
+					vol.getFlag(), 
+					pit.getFlag());
+		}
+		if (!player.isInMinigame())	return;	
 		if(priv.getFlag())
 			player.getPlayer().playSound(loc, 
 					Sound.valueOf(sound.getFlag()), 

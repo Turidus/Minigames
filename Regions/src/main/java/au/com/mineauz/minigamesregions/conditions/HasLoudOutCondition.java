@@ -6,6 +6,7 @@ import au.com.mineauz.minigames.menu.Callback;
 import au.com.mineauz.minigames.menu.Menu;
 import au.com.mineauz.minigames.menu.MenuItemPage;
 import au.com.mineauz.minigames.menu.MenuItemString;
+import au.com.mineauz.minigames.minigame.Minigame;
 import au.com.mineauz.minigames.minigame.modules.LoadoutModule;
 import au.com.mineauz.minigamesregions.Node;
 import au.com.mineauz.minigamesregions.Region;
@@ -43,7 +44,7 @@ public class HasLoudOutCondition extends ConditionInterface {
     }
 
     @Override
-    public boolean checkRegionCondition(MinigamePlayer player, Region region) {
+    public boolean checkRegionCondition(MinigamePlayer player, Region region, Minigame mgm) {
         if(player == null || !player.isInMinigame()) return false;
         LoadoutModule lmod = LoadoutModule.getMinigameModule(player.getMinigame());
         if(lmod.hasLoadout(loadOutName.getFlag())) {
@@ -54,7 +55,7 @@ public class HasLoudOutCondition extends ConditionInterface {
 
 
     @Override
-    public boolean checkNodeCondition(MinigamePlayer player, Node node) {
+    public boolean checkNodeCondition(MinigamePlayer player, Node node, Minigame mgm) {
         if(player == null || !player.isInMinigame()) return false;
         LoadoutModule lmod = LoadoutModule.getMinigameModule(player.getMinigame());
         if(lmod.hasLoadout(loadOutName.getFlag())) {

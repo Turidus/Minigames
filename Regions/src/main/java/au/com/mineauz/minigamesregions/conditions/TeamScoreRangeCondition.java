@@ -15,6 +15,7 @@ import au.com.mineauz.minigames.menu.Callback;
 import au.com.mineauz.minigames.menu.Menu;
 import au.com.mineauz.minigames.menu.MenuItemList;
 import au.com.mineauz.minigames.menu.MenuItemPage;
+import au.com.mineauz.minigames.minigame.Minigame;
 import au.com.mineauz.minigames.minigame.Team;
 import au.com.mineauz.minigames.minigame.TeamColor;
 import au.com.mineauz.minigames.minigame.modules.TeamsModule;
@@ -54,12 +55,12 @@ public class TeamScoreRangeCondition extends ConditionInterface {
 	}
 
 	@Override
-	public boolean checkRegionCondition(MinigamePlayer player, Region region) {
+	public boolean checkRegionCondition(MinigamePlayer player, Region region, Minigame mgm) {
 		return checkCondition(player);
 	}
 
 	@Override
-	public boolean checkNodeCondition(MinigamePlayer player, Node node) {
+	public boolean checkNodeCondition(MinigamePlayer player, Node node, Minigame mgm) {
 		return checkCondition(player);
 	}
 	

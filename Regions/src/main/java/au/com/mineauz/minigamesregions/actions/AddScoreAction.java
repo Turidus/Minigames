@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import au.com.mineauz.minigames.Minigames;
+import au.com.mineauz.minigames.minigame.Minigame;
 import au.com.mineauz.minigames.minigame.Team;
 import au.com.mineauz.minigames.minigame.modules.TeamsModule;
 import org.bukkit.Material;
@@ -50,7 +51,7 @@ public class AddScoreAction extends ActionInterface {
 
 	@Override
 	public void executeNodeAction(MinigamePlayer player,
-			Node base) {
+			Node base, Minigame mgm) {
 		debug(player,base);
 		if(player == null || !player.isInMinigame()) return;
 		player.addScore(amount.getFlag());
@@ -59,7 +60,7 @@ public class AddScoreAction extends ActionInterface {
 	}
 
 	@Override
-	public void executeRegionAction(MinigamePlayer player, Region base) {
+	public void executeRegionAction(MinigamePlayer player, Region base, Minigame mgm) {
 		debug(player,base);
 		if(player == null || !player.isInMinigame()) return;
 		player.addScore(amount.getFlag());

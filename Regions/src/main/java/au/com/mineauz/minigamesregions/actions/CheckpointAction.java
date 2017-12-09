@@ -6,6 +6,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 
 import au.com.mineauz.minigames.MinigamePlayer;
 import au.com.mineauz.minigames.menu.Menu;
+import au.com.mineauz.minigames.minigame.Minigame;
 import au.com.mineauz.minigamesregions.Node;
 import au.com.mineauz.minigamesregions.Region;
 
@@ -37,14 +38,14 @@ public class CheckpointAction extends ActionInterface {
 
 	@Override
 	public void executeRegionAction(MinigamePlayer player,
-			Region region) {
+			Region region, Minigame mgm) {
 		debug(player,region);
 		execute(player);
 	}
 
 	@Override
 	public void executeNodeAction(MinigamePlayer player,
-			Node node) {
+			Node node, Minigame mgm) {
 		debug(player,node);
 		execute(player);
 	}

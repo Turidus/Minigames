@@ -8,6 +8,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import au.com.mineauz.minigames.MinigamePlayer;
 import au.com.mineauz.minigames.menu.Menu;
 import au.com.mineauz.minigames.menu.MenuItemPage;
+import au.com.mineauz.minigames.minigame.Minigame;
 import au.com.mineauz.minigamesregions.Node;
 import au.com.mineauz.minigamesregions.Region;
 
@@ -38,12 +39,12 @@ public class ContainsEntireTeamCondition extends ConditionInterface {
 	}
 
 	@Override
-	public boolean checkRegionCondition(MinigamePlayer player, Region region) {
+	public boolean checkRegionCondition(MinigamePlayer player, Region region,Minigame mgm) {
         return region.getPlayers().containsAll(player.getTeam().getPlayers());
     }
 
 	@Override
-	public boolean checkNodeCondition(MinigamePlayer player, Node node) {
+	public boolean checkNodeCondition(MinigamePlayer player, Node node, Minigame mgm) {
 		return false;
 	}
 

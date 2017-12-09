@@ -8,6 +8,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 
 import au.com.mineauz.minigames.MinigamePlayer;
 import au.com.mineauz.minigames.menu.Menu;
+import au.com.mineauz.minigames.minigame.Minigame;
 import au.com.mineauz.minigamesregions.Node;
 import au.com.mineauz.minigamesregions.Region;
 
@@ -40,7 +41,7 @@ public class FallingBlockAction extends ActionInterface {
 	@SuppressWarnings("deprecation")
 	@Override
 	public void executeRegionAction(MinigamePlayer player,
-			Region region) {
+			Region region, Minigame mgm) {
 		debug(player,region);
 		Location temp = region.getFirstPoint();
 		for(int y = region.getFirstPoint().getBlockY(); 
@@ -67,7 +68,7 @@ public class FallingBlockAction extends ActionInterface {
 	@SuppressWarnings("deprecation")
 	@Override
 	public void executeNodeAction(MinigamePlayer player,
-			Node node) {
+			Node node, Minigame mgm) {
 		debug(player,node);
 		if(node.getLocation().getBlock().getType() != Material.AIR){
 			node.getLocation().getWorld().spawnFallingBlock(node.getLocation(), 

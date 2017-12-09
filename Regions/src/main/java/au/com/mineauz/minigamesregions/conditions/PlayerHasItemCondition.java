@@ -25,6 +25,7 @@ import au.com.mineauz.minigames.menu.MenuItemList;
 import au.com.mineauz.minigames.menu.MenuItemNewLine;
 import au.com.mineauz.minigames.menu.MenuItemPage;
 import au.com.mineauz.minigames.menu.MenuItemString;
+import au.com.mineauz.minigames.minigame.Minigame;
 import au.com.mineauz.minigamesregions.Node;
 import au.com.mineauz.minigamesregions.Region;
 
@@ -83,16 +84,17 @@ public class PlayerHasItemCondition extends ConditionInterface {
 	}
 
 	@Override
-	public boolean checkRegionCondition(MinigamePlayer player, Region region) {
+	public boolean checkRegionCondition(MinigamePlayer player, Region region, Minigame mgm) {
 		return check(player);
 	}
 
 	@Override
-	public boolean checkNodeCondition(MinigamePlayer player, Node node) {
+	public boolean checkNodeCondition(MinigamePlayer player, Node node, Minigame mgm) {
 		return check(player);
 	}
 	
 	private boolean check(MinigamePlayer player) {
+		if(player == null || !player.isInMinigame()) return false;
 		PositionType checkType = PositionType.valueOf(where.getFlag().toUpperCase());
 		if (checkType == null) {
 			checkType = PositionType.ANYWHERE;

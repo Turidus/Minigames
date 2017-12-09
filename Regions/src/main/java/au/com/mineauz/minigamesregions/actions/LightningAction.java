@@ -11,6 +11,7 @@ import au.com.mineauz.minigames.MinigamePlayer;
 import au.com.mineauz.minigames.config.BooleanFlag;
 import au.com.mineauz.minigames.menu.Menu;
 import au.com.mineauz.minigames.menu.MenuItemBack;
+import au.com.mineauz.minigames.minigame.Minigame;
 import au.com.mineauz.minigamesregions.Node;
 import au.com.mineauz.minigamesregions.Region;
 
@@ -44,7 +45,7 @@ public class LightningAction extends ActionInterface{
 	}
 
 	@Override
-	public void executeRegionAction(MinigamePlayer player, Region region) {
+	public void executeRegionAction(MinigamePlayer player, Region region, Minigame mgm) {
 		debug(player,region);
 		Random rand = new Random();
 		double xrand = rand.nextDouble() *
@@ -69,7 +70,7 @@ public class LightningAction extends ActionInterface{
 	}
 
 	@Override
-	public void executeNodeAction(MinigamePlayer player, Node node) {
+	public void executeNodeAction(MinigamePlayer player, Node node, Minigame mgm) {
 		debug(player,node);
 		if(effect.getFlag())
 			node.getLocation().getWorld().strikeLightningEffect(node.getLocation());

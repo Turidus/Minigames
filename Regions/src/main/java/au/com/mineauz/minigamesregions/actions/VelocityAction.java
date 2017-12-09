@@ -11,6 +11,7 @@ import au.com.mineauz.minigames.MinigamePlayer;
 import au.com.mineauz.minigames.config.FloatFlag;
 import au.com.mineauz.minigames.menu.Menu;
 import au.com.mineauz.minigames.menu.MenuItemBack;
+import au.com.mineauz.minigames.minigame.Minigame;
 import au.com.mineauz.minigamesregions.Main;
 import au.com.mineauz.minigamesregions.Node;
 import au.com.mineauz.minigamesregions.Region;
@@ -47,19 +48,19 @@ public class VelocityAction extends ActionInterface{
 	}
 
 	@Override
-	public void executeRegionAction(MinigamePlayer player, Region region) {
+	public void executeRegionAction(MinigamePlayer player, Region region, Minigame mgm) {
 		debug(player,region);
 		execute(player);
 	}
 
 	@Override
-	public void executeNodeAction(MinigamePlayer player, Node node) {
+	public void executeNodeAction(MinigamePlayer player, Node node, Minigame mgm) {
 		debug(player,node);
 		execute(player);
 	}
 	
 	private void execute(final MinigamePlayer player){
-		if(player == null) return;
+		if(player == null || !player.isInMinigame()) return;
 		Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
 			
 			@Override

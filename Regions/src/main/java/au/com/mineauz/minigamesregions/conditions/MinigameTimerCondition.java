@@ -47,13 +47,13 @@ public class MinigameTimerCondition extends ConditionInterface{
 	}
 
 	@Override
-	public boolean checkRegionCondition(MinigamePlayer player, Region region) {
-		return check(player.getMinigame());
+	public boolean checkRegionCondition(MinigamePlayer player, Region region, Minigame mgm) {
+		return check(mgm);
 	}
 
 	@Override
-	public boolean checkNodeCondition(MinigamePlayer player, Node node) {
-		return check(player.getMinigame());
+	public boolean checkNodeCondition(MinigamePlayer player, Node node, Minigame mgm) {
+		return check(mgm);
 	}
 	private boolean check(Minigame mg){
 		int timeLeft = mg.getMinigameTimer().getTimeLeft();

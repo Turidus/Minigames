@@ -14,6 +14,7 @@ import au.com.mineauz.minigames.menu.Callback;
 import au.com.mineauz.minigames.menu.Menu;
 import au.com.mineauz.minigames.menu.MenuItemBack;
 import au.com.mineauz.minigames.menu.MenuItemString;
+import au.com.mineauz.minigames.minigame.Minigame;
 import au.com.mineauz.minigamesregions.Node;
 import au.com.mineauz.minigamesregions.Region;
 
@@ -56,18 +57,20 @@ public class TakeItemAction extends ActionInterface{
 	}
 
 	@Override
-	public void executeRegionAction(MinigamePlayer player, Region region) {
+	public void executeRegionAction(MinigamePlayer player, Region region, Minigame mgm) {
 		debug(player,region);
 		execute(player);
 	}
 
 	@Override
-	public void executeNodeAction(MinigamePlayer player, Node node) {
+	public void executeNodeAction(MinigamePlayer player, Node node, Minigame mgm) {
 		debug(player,node);
 		execute(player);
 	}
 	
 	private void execute(MinigamePlayer player){
+		if(player == null || !player.isInMinigame()) return;
+		
 		ItemStack match = new ItemStack(Material.getMaterial(type.getFlag()), count.getFlag(), damage.getFlag().shortValue());
 		ItemStack matched = null;
 		boolean remove = false;

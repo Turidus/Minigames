@@ -33,8 +33,8 @@ public abstract class ConditionInterface {
 	public abstract String getCategory();
 	public abstract boolean useInRegions();
 	public abstract boolean useInNodes();
-	public abstract boolean checkRegionCondition(MinigamePlayer player, Region region);
-	public abstract boolean checkNodeCondition(MinigamePlayer player, Node node);
+	public abstract boolean checkRegionCondition(MinigamePlayer player, Region region, Minigame mgm);
+	public abstract boolean checkNodeCondition(MinigamePlayer player, Node node, Minigame mgm);
 	public abstract void saveArguments(FileConfiguration config, String path);
 	public abstract void loadArguments(FileConfiguration config, String path);
 	public abstract boolean displayMenu(MinigamePlayer player, Menu prev);

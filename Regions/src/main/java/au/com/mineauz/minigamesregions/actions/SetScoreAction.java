@@ -49,7 +49,7 @@ public class SetScoreAction extends ActionInterface {
 
 	@Override
 	public void executeNodeAction(MinigamePlayer player,
-			Node node) {
+			Node node, Minigame mgm) {
 		if(player == null || !player.isInMinigame()) return;
 		player.setScore(amount.getFlag());
 		player.getMinigame().setScore(player, player.getScore());
@@ -57,7 +57,7 @@ public class SetScoreAction extends ActionInterface {
 	}
 
 	@Override
-	public void executeRegionAction(MinigamePlayer player, Region region) {
+	public void executeRegionAction(MinigamePlayer player, Region region, Minigame mgm) {
 		if(player == null || !player.isInMinigame()) return;
 		player.setScore(amount.getFlag());
 		player.getMinigame().setScore(player, player.getScore());

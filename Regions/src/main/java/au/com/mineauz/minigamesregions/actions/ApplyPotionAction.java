@@ -20,6 +20,7 @@ import au.com.mineauz.minigames.menu.MenuItemInteger;
 import au.com.mineauz.minigames.menu.MenuItemList;
 import au.com.mineauz.minigames.menu.MenuItemPage;
 import au.com.mineauz.minigames.menu.MenuItemTime;
+import au.com.mineauz.minigames.minigame.Minigame;
 import au.com.mineauz.minigamesregions.Node;
 import au.com.mineauz.minigamesregions.Region;
 
@@ -57,19 +58,21 @@ public class ApplyPotionAction extends ActionInterface {
 
 	@Override
 	public void executeRegionAction(MinigamePlayer player,
-			Region region) {
+			Region region, Minigame mgm) {
 		debug(player,region);
 		execute(player);
 	}
 
 	@Override
 	public void executeNodeAction(MinigamePlayer player,
-			Node node) {
+			Node node, Minigame mgm) {
 		debug(player,node);
 		execute(player);
 	}
 	
 	private void execute(MinigamePlayer player){
+		if(player == null || !player.isInMinigame()) return;
+		
 		PotionEffect effect = new PotionEffect(PotionEffectType.getByName(type.getFlag()), 
 				dur.getFlag() * 20, amp.getFlag() - 1);
 		player.getPlayer().addPotionEffect(effect);

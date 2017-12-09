@@ -28,6 +28,7 @@ import au.com.mineauz.minigames.menu.MenuItemList;
 import au.com.mineauz.minigames.menu.MenuItemNewLine;
 import au.com.mineauz.minigames.menu.MenuItemPage;
 import au.com.mineauz.minigames.menu.MenuItemString;
+import au.com.mineauz.minigames.minigame.Minigame;
 import au.com.mineauz.minigamesregions.Main;
 import au.com.mineauz.minigamesregions.Node;
 import au.com.mineauz.minigamesregions.Region;
@@ -75,14 +76,13 @@ public class SpawnEntityAction extends ActionInterface {
 
 	@Override
 	public void executeRegionAction(MinigamePlayer player,
-			Region region) {
+			Region region, Minigame mgm) {
 		debug(player,region);
 	}
 
 	@Override
-	public void executeNodeAction(MinigamePlayer player, Node node) {
+	public void executeNodeAction(MinigamePlayer player, Node node, Minigame mgm) {
 		debug(player,node);
-		if(player == null || !player.isInMinigame()) return;
 		final Entity ent = node.getLocation().getWorld().spawnEntity(node.getLocation(), EntityType.valueOf(type.getFlag()));
 		
 		final double vx = Double.valueOf(settings.get("velocityx"));
@@ -105,7 +105,7 @@ public class SpawnEntityAction extends ActionInterface {
 		}
 		
 		ent.setMetadata("MinigameEntity", new FixedMetadataValue(Minigames.plugin, true));
-		player.getMinigame().getBlockRecorder().addEntity(ent, player, true);
+		mgm.getBlockRecorder().addEntity(ent, player, true);
 	}
 
 	@Override

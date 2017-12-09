@@ -12,6 +12,7 @@ import com.google.common.collect.ImmutableSet;
 import au.com.mineauz.minigames.MinigamePlayer;
 import au.com.mineauz.minigames.MinigameUtils;
 import au.com.mineauz.minigames.Minigames;
+import au.com.mineauz.minigames.minigame.Minigame;
 import au.com.mineauz.minigames.script.ScriptCollection;
 import au.com.mineauz.minigames.script.ScriptObject;
 import au.com.mineauz.minigames.script.ScriptReference;
@@ -162,7 +163,7 @@ public class Region implements ScriptObject {
 			public void run() {
 				List<MinigamePlayer> plys = new ArrayList<MinigamePlayer>(players);
 				for(MinigamePlayer player : plys){
-					execute(Triggers.getTrigger("TICK"), player);
+					execute(Triggers.getTrigger("TICK"), player, player.getMinigame());
 				}
 			}
 		}, 0, delay);
@@ -182,7 +183,7 @@ public class Region implements ScriptObject {
 			public void run() {
 				List<MinigamePlayer> plys = new ArrayList<MinigamePlayer>(players);
 				for(MinigamePlayer player : plys){
-					execute(Triggers.getTrigger("TICK"), player);
+					execute(Triggers.getTrigger("TICK"), player, player.getMinigame());
 				}
 			}
 		}, 0, taskDelay);
@@ -200,23 +201,23 @@ public class Region implements ScriptObject {
 		return enabled;
 	}
 	
-	public void execute(Trigger trigger, MinigamePlayer player){
-		if(player != null && player.getMinigame() != null && player.getMinigame().isSpectator(player)) return;
+	public void execute(Trigger trigger, MinigamePlayer player, Minigame mgm){
+		if(player != null && mgm != null && player.getMinigame().isSpectator(player)) return;
 		List<RegionExecutor> toExecute = new ArrayList<RegionExecutor>();
 		for(RegionExecutor exec : executors){
 			if(exec.getTrigger() == trigger){
-				if(checkConditions(exec, player) && exec.canBeTriggered(player))
+				if(checkConditions(exec, player, mgm) && exec.canBeTriggered(player))
 					toExecute.add(exec);
 			}
 		}
 		for(RegionExecutor exec : toExecute){
-			execute(exec, player);
+			execute(exec, player, mgm);
 		}
 	}
 	
-	public boolean checkConditions(RegionExecutor exec, MinigamePlayer player){
+	public boolean checkConditions(RegionExecutor exec, MinigamePlayer player, Minigame mgm){
 		for(ConditionInterface con : exec.getConditions()){
-			boolean c = con.checkRegionCondition(player, this);
+			boolean c = con.checkRegionCondition(player, this, mgm);
 			if(con.isInverted())
 				c = !c;
 			if(!c){
@@ -226,10 +227,10 @@ public class Region implements ScriptObject {
 		return true;
 	}
 	
-	public void execute(RegionExecutor exec, MinigamePlayer player){
+	public void execute(RegionExecutor exec, MinigamePlayer player, Minigame mgm){
 		for(ActionInterface act : exec.getActions()){
 			if(!enabled && !act.getName().equalsIgnoreCase("SET_ENABLED")) continue;
-			act.executeRegionAction(player, this);
+			act.executeRegionAction(player, this, mgm);
 			if(!exec.isTriggerPerPlayer())
 				exec.addPublicTrigger();
 			else
