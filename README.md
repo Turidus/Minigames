@@ -1,8 +1,9 @@
 Forked from AddstarMC/Minigames
 
-This fork adds:
+# Additions to Minigame Region:
 
-## MemorySwapBlogAction in MinigamesRegion
+## Actions:
+### MemorySwapBlogAction
 A Regional Action that swaps all specified blocks in that region with random blocks in a way that the blocks always have paires.
 
 To use this action, built a gameboard that has a way to conceal and reveal blocks. All blocks that will be placed by this action can
@@ -20,8 +21,24 @@ game.
 
 The maximum gameboard size is 120 gameblocks. This action will warn if the gameboard is to big and skip surplus blocks.
 
-## RegionSwapAction in MinigamesRegion
+### RegionSwapAction in MinigamesRegion
 This action swaps or replaces all blocks in on region with the blocks of a different region of equal size
 
-## Killer Trigger
+### TimedTriggerNodeAction
+This Action triggers a target node after a certain amount of time. If the action wants to execute after the minigame has already ended
+a NullPointerExeption occurs.
+
+### TimedTriggerRegionAction
+This Action triggers a target region after a certain amount of time. If the action wants to execute after the minigame has already ended
+a NullPointerExeption occurs.
+
+## Triggers:
+### Killer Trigger
 This trigger fires on player death but targets the killer instead of the dead player
+
+### TimedRemoteTrigger
+This trigger gets executed if a **TimedTriggerNodeAction** or **TimedTriggerRegionAction** targets this node/region.
+
+## Conditions
+### BlockHeldAndOnCondition
+This condition gives true if the player has the same block in their main hand then the block the player is standing on
