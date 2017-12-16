@@ -16,6 +16,7 @@ import au.com.mineauz.minigamesregions.executors.RegionExecutor;
 import au.com.mineauz.minigamesregions.menuitems.MenuItemAction;
 import au.com.mineauz.minigamesregions.menuitems.MenuItemActionAdd;
 
+//Modified by Turidus https://github.com/Turidus/Minigames
 public class Actions {
 	private static Map<String, Class<? extends ActionInterface>> actions = new HashMap<>();
 	
@@ -41,10 +42,6 @@ public class Actions {
 		addAction("PLAY_SOUND", PlaySoundAction.class);
 		addAction("CHECKPOINT", CheckpointAction.class);
 		addAction("SWAP_BLOCK", SwapBlockAction.class);
-		//Added by Turidus for https://github.com/Turidus/Minigames
-		addAction("MEMORY_SWAP_BLOCK", MemorySwapBlockAction.class);
-		addAction("REGION_SWAP_ACTION", RegionSwapAction.class);
-		
 		addAction("APPLY_POTION", ApplyPotionAction.class);
 		addAction("FALLING_BLOCK", FallingBlockAction.class);
 		addAction("ADD_TEAM_SCORE", AddTeamScoreAction.class);
@@ -59,6 +56,13 @@ public class Actions {
 		addAction("SET_ENABLED", SetEnabledAction.class);
 		addAction("RESET_TRIGGER_COUNT", ResetTriggerCountAction.class);
 		addAction("TRIGGER_RANDOM", TriggerRandomAction.class);
+		
+		//Added by Turidus
+		addAction("MEMORY_SWAP_BLOCK", MemorySwapBlockAction.class);
+		addAction("REGION_SWAP_ACTION", RegionSwapAction.class);
+		addAction("TIMED_TRIGGER_NODE", TimedTriggerNodeAction.class);
+		addAction("TIMED_TRIGGER_REGION", TimedTriggerRegionAction.class);
+		addAction("RANDOM_FILL_REGION", RegionRandomFillAction.class);
 	}
 	
 	public static void addAction(String name, Class<? extends ActionInterface> action){
