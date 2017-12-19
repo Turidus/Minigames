@@ -25,7 +25,20 @@ import au.com.mineauz.minigames.menu.MenuItemPage;
 import au.com.mineauz.minigames.menu.MenuItemString;
 import au.com.mineauz.minigamesregions.Node;
 import au.com.mineauz.minigamesregions.Region;
-
+/**
+ * 
+ * @author Turidus https://github.com/Turidus/Minigames
+ * This action fills a region with either airblocks or a specified block,
+ * randomly distributed.
+ * There are two modes:
+ * A) Mode random chance: Every block in the region has a random chance
+ * 		to become the specified block, else it becomes an airblock.
+ * 
+ * B) Mode precise number: The specified number of blocks will
+ * 		be placed randomly, the rest of the blocks will become
+ * 		airblocks.
+ *
+ */
 public class RegionRandomFillAction extends ActionInterface {
 
 	private StringFlag toType = new StringFlag("COBBLESTONE", "totype");
@@ -92,6 +105,7 @@ public class RegionRandomFillAction extends ActionInterface {
 		debug(player,node);
 	}
 	
+	//Mode random chance
 	@SuppressWarnings("deprecation")
 	public void executeRandomChance(Region region) {
 		
@@ -103,7 +117,7 @@ public class RegionRandomFillAction extends ActionInterface {
 					
 					Block block = region.getFirstPoint().getWorld().getBlockAt(x, y, z);
 					
-					if (Math.random() >= rndWeight) {
+					if (Math.random() >= rndWeight) {//If the roll fails, set a airblock
 						
 						BlockState blockState = block.getState();
 						blockState.setRawData((byte)0);;
@@ -114,7 +128,7 @@ public class RegionRandomFillAction extends ActionInterface {
 					}
 									
 										
-						// Block matches, now replace it
+						//Set block to the specified block
 						byte data = 0;
 						BlockFace facing = null;
 						if (toData.getFlag()) {
@@ -146,6 +160,7 @@ public class RegionRandomFillAction extends ActionInterface {
 			}
 	}
 	
+	//Mode precise number
 	public void executePreciseNumber(Region region) {
 		ArrayList<Block> blocks = new ArrayList<Block>();
 		ArrayList<Integer> indexes = new ArrayList<Integer>();
@@ -160,22 +175,26 @@ public class RegionRandomFillAction extends ActionInterface {
 				}
 			}
 		}
-		
-		if (preciseNumber.getFlag() > blocks.size()) {
-			return;
+		/* If the number of blocks is higher than the the number of blocks in the region,
+		 * this prevents an out of bounds
+		 */
+		if (preciseNumber.getFlag() > blocks.size()) { 
+			preciseNumber.setFlag(blocks.size());
 		}
 		
+		// Collecting all possible block positions
 		for (int i = 0; i < blocks.size(); i++) {
 			indexes.add(i);
 		}
 		
+		// Using the collection to place the specified number of blocks without any overlap
 		for (int i = 0; i < preciseNumber.getFlag(); i++) {
 			int tempIndex = rndNumber.nextInt(indexes.size());
 			Block block = blocks.get(indexes.get(tempIndex));
 			indexes.remove(tempIndex);
 			
 			
-			// Block matches, now replace it
+			// Set the block
 			byte data = 0;
 			BlockFace facing = null;
 			if (toData.getFlag()) {
@@ -204,6 +223,7 @@ public class RegionRandomFillAction extends ActionInterface {
 			}					
 		}
 		
+		//Fill the remaining block positions with airblocks
 		for (int i : indexes) {
 			
 			BlockState blockState = blocks.get(i).getState();

@@ -35,7 +35,7 @@ public class BlockOnAndHeldCondition extends ConditionInterface {
 
 	@Override
 	public String getName() {
-		return "BLOCK_ON_AMD_HELD";
+		return "BLOCK_ON_AND_HELD";
 	}
 	
 	@Override

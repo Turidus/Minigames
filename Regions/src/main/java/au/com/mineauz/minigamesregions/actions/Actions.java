@@ -63,6 +63,7 @@ public class Actions {
 		addAction("TIMED_TRIGGER_NODE", TimedTriggerNodeAction.class);
 		addAction("TIMED_TRIGGER_REGION", TimedTriggerRegionAction.class);
 		addAction("RANDOM_FILL_REGION", RegionRandomFillAction.class);
+		addAction("TRIGGER_NODE_ALL_PLAYERS", TriggerNodeForAllPlayerAction.class);
 	}
 	
 	public static void addAction(String name, Class<? extends ActionInterface> action){
