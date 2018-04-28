@@ -120,7 +120,7 @@ public class RegionEvents implements Listener{
 			}
 		}
 		
-		//Turidus: KillerTrigger gets executet here
+		//Turidus: KillerTrigger gets executed here
 		if(ply.getPlayer().getKiller() == null) return;
 		MinigamePlayer attacker = pdata.getMinigamePlayer(ply.getPlayer().getKiller());
 		if(attacker.isInMinigame()){
