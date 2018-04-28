@@ -45,7 +45,7 @@ import au.com.mineauz.minigamesregions.actions.MemorySwapBlockAction.PhantomBloc
  * 	is WOOL:1, only orange WOOL will be removed.
  *
  */
-public class MemorySwapBlockAction extends ActionInterface {
+public class MemorySwapBlockAction extends AbstractAction {
 	
 	/**
 	 * 

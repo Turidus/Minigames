@@ -27,7 +27,7 @@ import au.com.mineauz.minigamesregions.triggers.Triggers;
  * @author Turidus https://github.com/Turidus/Minigames
  *
  */
-public class TimedTriggerNodeAction extends ActionInterface {
+public class TimedTriggerNodeAction extends AbstractAction {
 	
 	private StringFlag node = new StringFlag("None", "node");
 	private IntegerFlag delay = new IntegerFlag(20,"delay");

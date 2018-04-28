@@ -33,7 +33,7 @@ import au.com.mineauz.minigamesregions.triggers.Triggers;
  * two regions.
  * 
  */
-public class RegionSwapAction extends ActionInterface {
+public class RegionSwapAction extends AbstractAction {
 	
 	private StringFlag fromRegion = new StringFlag("","fromRegion");
 	private StringFlag toRegion = new StringFlag("","toRegion");

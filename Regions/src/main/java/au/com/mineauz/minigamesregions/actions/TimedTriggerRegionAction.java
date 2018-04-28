@@ -26,7 +26,7 @@ import au.com.mineauz.minigamesregions.triggers.Triggers;
  * @author Turidus https://github.com/Turidus/Minigames
  *
  */
-public class TimedTriggerRegionAction extends ActionInterface {
+public class TimedTriggerRegionAction extends AbstractAction {
 	
 	private StringFlag region = new StringFlag("None", "region");
 	private IntegerFlag delay = new IntegerFlag(20, "delay");
