@@ -39,7 +39,6 @@ public class Triggers {
 		addTrigger(new StartGlideTrigger());
 		addTrigger(new StopGlideTrigger());
 		//Added by Turidus
-		addTrigger(new KillerTrigger());
 		addTrigger(new TimedRemoteTrigger());
 		
 	}

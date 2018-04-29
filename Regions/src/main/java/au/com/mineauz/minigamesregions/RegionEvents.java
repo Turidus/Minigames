@@ -126,20 +126,6 @@ public class RegionEvents implements Listener{
 				}
 			}
 		}
-		
-		//Turidus: KillerTrigger gets executed here
-		if(ply.getPlayer().getKiller() == null) return;
-		MinigamePlayer attacker = pdata.getMinigamePlayer(ply.getPlayer().getKiller());
-		if(attacker.isInMinigame()){
-			for(Node node : RegionModule.getMinigameModule(attacker.getMinigame()).getNodes()){
-				node.execute(Triggers.getTrigger("KILLER"), attacker);
-			}
-			for(Region region : RegionModule.getMinigameModule(attacker.getMinigame()).getRegions()){
-				if(region.hasPlayer(attacker))
-					region.execute(Triggers.getTrigger("KILLER"), attacker);
-			}
-		}
-		
 	}
 	
 	@EventHandler(ignoreCancelled = true)
