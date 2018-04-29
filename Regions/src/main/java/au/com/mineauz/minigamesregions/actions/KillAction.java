@@ -41,7 +41,7 @@ public class KillAction extends AbstractAction {
 		debug(player,node);
 		if(player == null || !player.isInMinigame()) return;
 		if(!player.isDead())
-			player.getPlayer().damage(player.getPlayer().getHealth());
+			player.getPlayer().setHealth(0.0);
 	}
 
 	@Override
@@ -49,7 +49,7 @@ public class KillAction extends AbstractAction {
 		debug(player,region);
 		if(player == null || !player.isInMinigame()) return;
 		if(!player.isDead())
-			player.getPlayer().damage(player.getPlayer().getHealth());
+			player.getPlayer().setHealth(0.0);
 	}
 
 	@Override
