@@ -33,12 +33,13 @@ This Action triggers a target region after a certain amount of time. If the acti
 a NullPointerExeption occurs.
 
 ## Triggers:
-### Killer Trigger
-This trigger fires on player death but targets the killer instead of the dead player
-
 ### TimedRemoteTrigger
 This trigger gets executed if a **TimedTriggerNodeAction** or **TimedTriggerRegionAction** targets this node/region.
 
 ## Conditions
 ### BlockHeldAndOnCondition
 This condition gives true if the player has the same block in their main hand then the block the player is standing on
+
+# Other Changes
+### KillAction
+Changed the way the player is killed. Instead of dealing damage to the player (which can be reduced by status effects), it now sets the players health directly to zero.
