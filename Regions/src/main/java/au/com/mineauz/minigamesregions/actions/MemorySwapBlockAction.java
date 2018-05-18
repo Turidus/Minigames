@@ -31,7 +31,7 @@ import au.com.mineauz.minigamesregions.actions.MemorySwapBlockAction.PhantomBloc
 /**
  * @author Turidus  https://github.com/Turidus/Minigames
  * 
- * This class provides the methods necessary to fill a gameboard with pairs of blocks randomly placed.
+ * This class provides the methods necessary to fill a gameboard with pairs of randomly placed blocks.
  * Its a region action and can as such only run inside a region.
  * 
  * The user can define two options in the menu.

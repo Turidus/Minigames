@@ -66,6 +66,7 @@ public class Actions {
 		addAction("REGION_SWAP_ACTION", RegionSwapAction.class);
 		addAction("TIMED_TRIGGER_NODE", TimedTriggerNodeAction.class);
 		addAction("TIMED_TRIGGER_REGION", TimedTriggerRegionAction.class);
+		addAction("RANDOM_FILLING", RandomFillingAction.class);
 	}
 	
 	public static void addAction(String name, Class<? extends ActionInterface> action){

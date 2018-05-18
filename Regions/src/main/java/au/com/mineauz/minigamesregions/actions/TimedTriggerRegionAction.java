@@ -44,7 +44,7 @@ public class TimedTriggerRegionAction extends AbstractAction {
 	@Override
 	public void describe(Map<String, Object> out) {
 		out.put("Region", region.getFlag());
-		out.put("Delay", delay.getFlag());
+		out.put("Delay in ticks", delay.getFlag());
 	}
 
 	@Override

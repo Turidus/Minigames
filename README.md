@@ -32,6 +32,10 @@ a NullPointerExeption occurs.
 This Action triggers a target region after a certain amount of time. If the action wants to execute after the minigame has already ended
 a NullPointerExeption occurs.
 
+### RandomFillingAction
+Randomly fills a region with a specified Block. If "replace misses with air" is activated, all blocks in the region that do not get replaced
+by the specified block get replaced by air.
+
 ## Triggers:
 ### TimedRemoteTrigger
 This trigger gets executed if a **TimedTriggerNodeAction** or **TimedTriggerRegionAction** targets this node/region.

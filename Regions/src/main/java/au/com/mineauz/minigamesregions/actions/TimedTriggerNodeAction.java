@@ -45,7 +45,7 @@ public class TimedTriggerNodeAction extends AbstractAction {
 	@Override
 	public void describe(Map<String, Object> out) {
 		out.put("Node", node.getFlag());
-		out.put("Delay in s", delay.getFlag());
+		out.put("Delay in ticks", delay.getFlag());
 	}
 
 	@Override
